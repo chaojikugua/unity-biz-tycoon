@@ -43,10 +43,9 @@ public class Store : MonoBehaviour {
 	}
 
 	public void BuyStore() {
-		//if (baseStoreCost > currentBalance) {
-		//	Debug.Log ("Not enough money!");
-		//	return;
-		//}
+		if (!GameManager.CanBuy(baseStoreCost)) {
+			return;
+		}
 
 		storeCount++;
 		StoreCountText.text = storeCount.ToString();
