@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour {
 
 	public Text StoreCountText;
-	public Text CurrentBalanceText;
+
 	public Slider ProgressSlider;
+	public GameManager GameManager;
 
 	int storeCount;
-	float currentBalance;
+
 	float baseStoreCost;
 	float baseStoreProfit;
 	float storeTimer = 4f;
@@ -19,11 +20,11 @@ public class Store : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		storeCount = 1;
-		currentBalance = 2.0f;
+
 		baseStoreCost = 1.50f;
 		baseStoreProfit = .50f;
 		startTimer = false;
-		CurrentBalanceText.text = currentBalance.ToString("C2");
+
 	}
 	
 	// Update is called once per frame
@@ -34,23 +35,24 @@ public class Store : MonoBehaviour {
 				Debug.Log ("timer has ended - resetting!");
 				startTimer = false;
 				currentTimer = 0f;
-				currentBalance += baseStoreProfit * storeCount;
-				CurrentBalanceText.text = currentBalance.ToString("C2");
+				GameManager.UpdateBalance (baseStoreProfit * storeCount);
+			
 			}
 		}	
 		ProgressSlider.value = currentTimer / storeTimer;
 	}
 
 	public void BuyStore() {
-		if (baseStoreCost > currentBalance) {
-			Debug.Log ("Not enough money!");
-			return;
-		}
+		//if (baseStoreCost > currentBalance) {
+		//	Debug.Log ("Not enough money!");
+		//	return;
+		//}
 
 		storeCount++;
 		StoreCountText.text = storeCount.ToString();
-		currentBalance = currentBalance - baseStoreCost;
-		CurrentBalanceText.text = currentBalance.ToString("C2");
+
+		GameManager.UpdateBalance (-baseStoreCost);
+
 	}
 
 	public void StoreOnClick(){
