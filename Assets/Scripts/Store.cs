@@ -6,6 +6,7 @@ public class Store : MonoBehaviour {
 
 	public Text StoreCountText;
 	public Text CurrentBalanceText;
+	public Slider ProgressSlider;
 
 	int storeCount;
 	float currentBalance;
@@ -36,7 +37,8 @@ public class Store : MonoBehaviour {
 				currentBalance += baseStoreProfit * storeCount;
 				CurrentBalanceText.text = currentBalance.ToString("C2");
 			}
-		}		
+		}	
+		ProgressSlider.value = currentTimer / storeTimer;
 	}
 
 	public void BuyStore() {
