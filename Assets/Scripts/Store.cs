@@ -8,22 +8,20 @@ public class Store : MonoBehaviour {
 
 	public Slider ProgressSlider;
 	public GameManager GameManager;
+	public float storeTimer = 4f;
 
-	int storeCount;
+	public int storeCount;
 
-	float baseStoreCost;
-	float baseStoreProfit;
-	float storeTimer = 4f;
+	public float baseStoreCost;
+	public float baseStoreProfit;
+
 	float currentTimer = 0f;
 	bool startTimer;
 
 	// Use this for initialization
 	void Start () {
-		storeCount = 1;
-
-		baseStoreCost = 1.50f;
-		baseStoreProfit = .50f;
 		startTimer = false;
+		StoreCountText.text = storeCount.ToString();
 
 	}
 	
