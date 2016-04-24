@@ -18,6 +18,7 @@ public class Store : MonoBehaviour {
 	public float baseStoreCost;
 	public float baseStoreProfit;
 	public bool managerUnlocked;
+	public bool storeUnlocked;
 
 	float currentTimer = 0f;
 	bool startTimer;
@@ -30,7 +31,6 @@ public class Store : MonoBehaviour {
 		StoreCountText.text = storeCount.ToString();
 		nextStoreCost = baseStoreCost;
 		UpdateBuyButton ();
-
 	}
 
 	void UpdateBuyButton() {
@@ -54,11 +54,24 @@ public class Store : MonoBehaviour {
 	}
 
 	public void CheckStoreBuy() {
+
+		CanvasGroup cg = this.transform.GetComponent<CanvasGroup> ();
+
+		if (!storeUnlocked && !GameManager.CanBuy(nextStoreCost)) {
+			cg.interactable = false;
+			cg.alpha = 0; //invisible
+		} else {
+			cg.interactable = true;
+			cg.alpha = 1; //visible
+			storeUnlocked = true;
+		}
+
 		if (GameManager.CanBuy (nextStoreCost)) {
 			BuyButton.interactable = true;
 		} else {
 			BuyButton.interactable = false;
 		}
+
 	}
 
 	public void BuyStore() {
