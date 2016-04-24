@@ -19,6 +19,7 @@ public class Store : MonoBehaviour {
 	public float baseStoreProfit;
 	public bool managerUnlocked;
 	public bool storeUnlocked;
+	public int storeTimerDivisor = 1;
 
 	float currentTimer = 0f;
 	bool startTimer;
@@ -85,6 +86,9 @@ public class Store : MonoBehaviour {
 		GameManager.UpdateBalance (-nextStoreCost);
 		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
 
+		if (storeCount % storeTimerDivisor == 0) {
+			storeTimer = storeTimer / 2;
+		}
 	}
 
 	public void StoreOnClick(){
