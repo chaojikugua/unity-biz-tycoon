@@ -88,8 +88,7 @@ public class Store : MonoBehaviour {
 	}
 
 	public void StoreOnClick(){
-		Debug.Log ("storeOnClick!");
-		if (!startTimer) {
+		if (!startTimer && storeCount > 0) {
 			startTimer = true;	
 		}
 	}
