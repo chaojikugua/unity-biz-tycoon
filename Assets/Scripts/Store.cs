@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour {
 
 	public Text StoreCountText;
+	public Text BuyButtonText;
 
 	public Slider ProgressSlider;
 	public GameManager GameManager;
@@ -27,7 +28,12 @@ public class Store : MonoBehaviour {
 		startTimer = false;
 		StoreCountText.text = storeCount.ToString();
 		nextStoreCost = baseStoreCost;
+		UpdateBuyButton ();
 
+	}
+
+	void UpdateBuyButton() {
+		BuyButtonText.text = "Buy " + nextStoreCost.ToString ("C2");
 	}
 	
 	// Update is called once per frame
@@ -52,9 +58,9 @@ public class Store : MonoBehaviour {
 
 		storeCount++;
 		StoreCountText.text = storeCount.ToString();
-		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
-		Debug.Log ("nextStoreCost=" + nextStoreCost);
+		UpdateBuyButton ();
 		GameManager.UpdateBalance (-nextStoreCost);
+		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
 
 	}
 
