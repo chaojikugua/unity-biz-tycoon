@@ -9,19 +9,24 @@ public class Store : MonoBehaviour {
 	public Slider ProgressSlider;
 	public GameManager GameManager;
 	public float storeTimer = 4f;
+	public float storeMultiplier;
 
 	public int storeCount;
 
 	public float baseStoreCost;
 	public float baseStoreProfit;
+	public bool managerUnlocked;
 
 	float currentTimer = 0f;
 	bool startTimer;
+	private float nextStoreCost;
+
 
 	// Use this for initialization
 	void Start () {
 		startTimer = false;
 		StoreCountText.text = storeCount.ToString();
+		nextStoreCost = baseStoreCost;
 
 	}
 	
@@ -30,7 +35,7 @@ public class Store : MonoBehaviour {
 		if (startTimer){
 			currentTimer += Time.deltaTime;
 			if (currentTimer > storeTimer) {
-				Debug.Log ("timer has ended - resetting!");
+				if (!managerUnlocked)
 				startTimer = false;
 				currentTimer = 0f;
 				GameManager.UpdateBalance (baseStoreProfit * storeCount);
@@ -41,14 +46,15 @@ public class Store : MonoBehaviour {
 	}
 
 	public void BuyStore() {
-		if (!GameManager.CanBuy(baseStoreCost)) {
+		if (!GameManager.CanBuy(nextStoreCost)) {
 			return;
 		}
 
 		storeCount++;
 		StoreCountText.text = storeCount.ToString();
-
-		GameManager.UpdateBalance (-baseStoreCost);
+		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
+		Debug.Log ("nextStoreCost=" + nextStoreCost);
+		GameManager.UpdateBalance (-nextStoreCost);
 
 	}
 
