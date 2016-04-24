@@ -6,6 +6,7 @@ public class Store : MonoBehaviour {
 
 	public Text StoreCountText;
 	public Text BuyButtonText;
+	public Button BuyButton;
 
 	public Slider ProgressSlider;
 	public GameManager GameManager;
@@ -49,6 +50,15 @@ public class Store : MonoBehaviour {
 			}
 		}	
 		ProgressSlider.value = currentTimer / storeTimer;
+		CheckStoreBuy ();
+	}
+
+	public void CheckStoreBuy() {
+		if (GameManager.CanBuy (nextStoreCost)) {
+			BuyButton.interactable = true;
+		} else {
+			BuyButton.interactable = false;
+		}
 	}
 
 	public void BuyStore() {
