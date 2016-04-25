@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+	public static GameManager instance;
 	public Text CurrentBalanceText;
 
 	float currentBalance;
@@ -14,7 +15,12 @@ public class GameManager : MonoBehaviour {
 		CurrentBalanceText.text = currentBalance.ToString("C2");
 	
 	}
-	
+
+	void Awake() {
+		if (instance == null)
+			instance = this;
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
