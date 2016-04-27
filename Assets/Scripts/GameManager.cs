@@ -5,14 +5,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
-	public Text CurrentBalanceText;
-
 	float currentBalance;
 
 	// Use this for initialization
 	void Start () {
 		currentBalance = 2.0f;
-		CurrentBalanceText.text = currentBalance.ToString("C2");
+		UIManager.instance.UpdateUI ();
+
 	
 	}
 
@@ -28,10 +27,14 @@ public class GameManager : MonoBehaviour {
 
 	public void UpdateBalance(float amount) {
 		currentBalance += amount;
-		CurrentBalanceText.text = currentBalance.ToString("C2");
+		UIManager.instance.UpdateUI ();
 	}
 
 	public bool CanBuy(float cost) {
 		return (cost <= currentBalance);
+	}
+
+	public float GetCurrentBalance() {
+		return currentBalance;
 	}
 }
