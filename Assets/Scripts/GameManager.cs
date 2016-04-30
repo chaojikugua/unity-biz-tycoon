@@ -4,15 +4,17 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+	public delegate void UpdateBalance ();
+	public static event UpdateBalance OnUpdateBalance;
+
 	public static GameManager instance;
 	float currentBalance;
 
 	// Use this for initialization
 	void Start () {
 		currentBalance = 2.0f;
-		UIManager.instance.UpdateUI ();
-
-	
+		if (OnUpdateBalance != null)
+			OnUpdateBalance();		
 	}
 
 	void Awake() {
@@ -25,9 +27,10 @@ public class GameManager : MonoBehaviour {
 	
 	}
 
-	public void UpdateBalance(float amount) {
+	public void AddToBalance(float amount) {
 		currentBalance += amount;
-		UIManager.instance.UpdateUI ();
+		if (OnUpdateBalance != null)
+			OnUpdateBalance();		
 	}
 
 	public bool CanBuy(float cost) {

@@ -45,7 +45,7 @@ public class Store : MonoBehaviour {
 				if (!managerUnlocked)
 				startTimer = false;
 				currentTimer = 0f;
-				GameManager.instance.UpdateBalance (baseStoreProfit * storeCount);
+				GameManager.instance.AddToBalance (baseStoreProfit * storeCount);
 			
 			}
 		}	
@@ -82,7 +82,7 @@ public class Store : MonoBehaviour {
 		storeCount++;
 		StoreCountText.text = storeCount.ToString();
 		UpdateBuyButton ();
-		GameManager.instance.UpdateBalance (-nextStoreCost);
+		GameManager.instance.AddToBalance (-nextStoreCost);
 		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
 
 		if (storeCount % storeTimerDivisor == 0) {
