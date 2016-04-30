@@ -8,7 +8,6 @@ public class Store : MonoBehaviour {
 	public Text BuyButtonText;
 	public Button BuyButton;
 
-	public Slider ProgressSlider;
 	public float storeTimer = 4f;
 	public float storeMultiplier;
 
@@ -20,7 +19,7 @@ public class Store : MonoBehaviour {
 	public bool storeUnlocked;
 	public int storeTimerDivisor = 1;
 
-	float currentTimer = 0f;
+	public float currentTimer = 0f;
 	bool startTimer;
 	private float nextStoreCost;
 
@@ -49,7 +48,7 @@ public class Store : MonoBehaviour {
 			
 			}
 		}	
-		ProgressSlider.value = currentTimer / storeTimer;
+
 		CheckStoreBuy ();
 	}
 
