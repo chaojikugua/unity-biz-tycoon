@@ -22,5 +22,36 @@ public class UIStore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ProgressSlider.value = Store.currentTimer / Store.storeTimer;
+		UpdateUI ();
+	}
+
+	public void UpdateUI() {
+		CanvasGroup cg = this.transform.GetComponent<CanvasGroup> ();
+		if (!Store.storeUnlocked && !GameManager.instance.CanBuy(Store.nextStoreCost)) {
+			cg.interactable = false;
+			cg.alpha = 0; //invisible
+		} else {
+			cg.interactable = true;
+			cg.alpha = 1; //visible
+			Store.storeUnlocked = true;
+		}
+		if (GameManager.instance.CanBuy (Store.nextStoreCost)) {
+			BuyButton.interactable = true;
+		} else {
+			BuyButton.interactable = false;
+		}
+		BuyButtonText.text = "Buy " + Store.nextStoreCost.ToString ("C2");
+		StoreCountText.text = Store.storeCount.ToString();
+	}
+
+	public void BuyStoreOnClick(){
+		if (!GameManager.instance.CanBuy(Store.nextStoreCost)) {
+			return;
+		}
+		Store.BuyStore ();
+	}
+
+	public void ProgressTimerOnClick() {
+		Store.ProgressTimer ();
 	}
 }
