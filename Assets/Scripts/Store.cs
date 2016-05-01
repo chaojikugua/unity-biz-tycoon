@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Store : MonoBehaviour {
 
-	float storeTimer = 4f;
+	public float storeTimer;
 	public float storeMultiplier;
 	int storeCount;
 	public float baseStoreCost;
