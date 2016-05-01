@@ -48,8 +48,8 @@ public class UIStore : MonoBehaviour {
 		} else {
 			BuyButton.interactable = false;
 		}
-
-
+		StoreCountText.text = Store.getStoreCount().ToString();
+		BuyButtonText.text = "Buy " + Store.getNextStoreCost().ToString ("C2");
 	}
 
 	public void BuyStoreOnClick(){
@@ -57,8 +57,7 @@ public class UIStore : MonoBehaviour {
 			return;
 		}
 		Store.BuyStore ();
-		StoreCountText.text = Store.getStoreCount().ToString();
-		BuyButtonText.text = "Buy " + Store.getNextStoreCost().ToString ("C2");
+
 	}
 
 	public void ProgressTimerOnClick() {
