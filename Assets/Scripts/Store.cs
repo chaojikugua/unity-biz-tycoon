@@ -4,22 +4,24 @@ using UnityEngine.UI;
 
 public class Store : MonoBehaviour {
 
-	public float storeTimer = 4f;
+	float storeTimer = 4f;
 	public float storeMultiplier;
-	public int storeCount;
+	int storeCount;
 	public float baseStoreCost;
 	public float baseStoreProfit;
 	public bool managerUnlocked;
 	public bool storeUnlocked;
 	public int storeTimerDivisor = 1;
-	public float currentTimer = 0f;
+	float currentTimer = 0f;
 	bool startTimer;
-	public float nextStoreCost;
+	float nextStoreCost;
 
 	// Use this for initialization
 	void Start () {
 		startTimer = false;
 		nextStoreCost = baseStoreCost;
+		storeCount = 0;
+		storeTimer = 4f;
 	}
 		
 	// Update is called once per frame
@@ -36,17 +38,33 @@ public class Store : MonoBehaviour {
 	}
 		
 	public void BuyStore() {		
-		storeCount++;
 		GameManager.instance.AddToBalance (-nextStoreCost);
 		nextStoreCost = (baseStoreCost * Mathf.Pow(storeMultiplier, storeCount));
 		if (storeCount % storeTimerDivisor == 0) {
 			storeTimer = storeTimer / 2;
 		}
+		storeCount++;
 	}
 
 	public void ProgressTimer(){
 		if (!startTimer && storeCount > 0) {
 			startTimer = true;	
 		}
+	}
+
+	public float getCurrentTimer(){
+		return currentTimer;
+	}
+
+	public float getStoreTimer() {
+		return storeTimer;
+	}
+
+	public float getNextStoreCost() {
+		return nextStoreCost;
+	}
+
+	public int getStoreCount() {
+		return storeCount;
 	}
 }

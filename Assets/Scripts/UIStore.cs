@@ -18,16 +18,24 @@ public class UIStore : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+	void OnEnable() {
+		GameManager.OnUpdateBalance += UpdateUI; //subscribe to OnUpdateBalance event
+	}
+
+	void OnDisable() {
+		GameManager.OnUpdateBalance -= UpdateUI; //unsubscribe to OnUpdateBalance event
+	}		
+
 	// Update is called once per frame
 	void Update () {
-		ProgressSlider.value = Store.currentTimer / Store.storeTimer;
-		UpdateUI ();
+		ProgressSlider.value = Store.getCurrentTimer() / Store.getStoreTimer();
+	
 	}
 
 	public void UpdateUI() {
 		CanvasGroup cg = this.transform.GetComponent<CanvasGroup> ();
-		if (!Store.storeUnlocked && !GameManager.instance.CanBuy(Store.nextStoreCost)) {
+		if (!Store.storeUnlocked && !GameManager.instance.CanBuy(Store.getNextStoreCost())) {
 			cg.interactable = false;
 			cg.alpha = 0; //invisible
 		} else {
@@ -35,7 +43,7 @@ public class UIStore : MonoBehaviour {
 			cg.alpha = 1; //visible
 			Store.storeUnlocked = true;
 		}
-		if (GameManager.instance.CanBuy (Store.nextStoreCost)) {
+		if (GameManager.instance.CanBuy (Store.getNextStoreCost())) {
 			BuyButton.interactable = true;
 		} else {
 			BuyButton.interactable = false;
@@ -45,12 +53,12 @@ public class UIStore : MonoBehaviour {
 	}
 
 	public void BuyStoreOnClick(){
-		if (!GameManager.instance.CanBuy(Store.nextStoreCost)) {
+		if (!GameManager.instance.CanBuy(Store.getNextStoreCost())) {
 			return;
 		}
 		Store.BuyStore ();
-		StoreCountText.text = Store.storeCount.ToString();
-		BuyButtonText.text = "Buy " + Store.nextStoreCost.ToString ("C2");
+		StoreCountText.text = Store.getStoreCount().ToString();
+		BuyButtonText.text = "Buy " + Store.getNextStoreCost().ToString ("C2");
 	}
 
 	public void ProgressTimerOnClick() {
