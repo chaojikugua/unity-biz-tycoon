@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Xml;
+using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour {
 
@@ -27,6 +28,12 @@ public class DataManager : MonoBehaviour {
 
 			XmlNodeList storeNodes = storeInfo.ChildNodes;
 			foreach (XmlNode storeNode in storeNodes) {
+				if (storeNode.Name == "name") {
+					string nameOfStore = storeNode.InnerText;
+					Text storeNameText = storeObj.transform.Find ("StoreNameText").GetComponent<Text> ();
+					storeNameText.text = nameOfStore;
+
+				}
 				if (storeNode.Name == "BaseStoreProfit") {
 					storeObj.baseStoreProfit = float.Parse(storeNode.InnerText);
 				}
@@ -35,6 +42,9 @@ public class DataManager : MonoBehaviour {
 				}
 				if (storeNode.Name == "StoreTimer") {
 					storeObj.storeTimer = float.Parse(storeNode.InnerText);
+				}
+				if (storeNode.Name == "StoreMultiplier") {
+					storeObj.storeMultiplier = float.Parse (storeNode.InnerText);
 				}
 				newStore.transform.SetParent (StorePanel.transform, false);
 			}

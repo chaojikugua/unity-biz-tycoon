@@ -13,6 +13,7 @@ public class UIStore : MonoBehaviour {
 
 	void Awake() {
 		Store = transform.GetComponent<Store>();
+		UpdateUI ();
 	}
 	// Use this for initialization
 	void Start () {
