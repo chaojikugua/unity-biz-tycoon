@@ -2,13 +2,19 @@
 	<store>
 	  <name>Donut Shop</name>
 	  <BaseStoreCost>1.25</BaseStoreCost>
-	  <BaseStoreProfit>4.78</BaseStoreProfit>
+	  <BaseStoreProfit>2.78</BaseStoreProfit>
 	  <StoreTimer>4</StoreTimer>
 	</store>  
 	<store>
 	  <name>Pizza Restaurant</name>
 	  <BaseStoreCost>2.75</BaseStoreCost>
-	  <BaseStoreProfit>8.54</BaseStoreProfit>
-	  <StoreTimer>8</StoreTimer>
+	  <BaseStoreProfit>4.54</BaseStoreProfit>
+	  <StoreTimer>7</StoreTimer>
+	</store>  
+	<store>
+	  <name>Clothes Store</name>
+	  <BaseStoreCost>5.48</BaseStoreCost>
+	  <BaseStoreProfit>8.11</BaseStoreProfit>
+	  <StoreTimer>12</StoreTimer>
 	</store>  
 </gamedata>

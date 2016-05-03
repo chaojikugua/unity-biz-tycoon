@@ -38,9 +38,6 @@ public class DataManager : MonoBehaviour {
 				}
 				newStore.transform.SetParent (StorePanel.transform, false);
 			}
-				
-
-
 		}
 	}
 }
