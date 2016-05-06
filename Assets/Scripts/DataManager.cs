@@ -34,6 +34,11 @@ public class DataManager : MonoBehaviour {
 					storeNameText.text = nameOfStore;
 
 				}
+				if (storeNode.Name == "image") {
+					Sprite storeSprite = Resources.Load<Sprite> (storeNode.InnerText);
+					Image storeImage = storeObj.transform.Find ("StoreButtonImage").GetComponent<Image> ();
+					storeImage.sprite = storeSprite;
+				}
 				if (storeNode.Name == "BaseStoreProfit") {
 					storeObj.baseStoreProfit = float.Parse(storeNode.InnerText);
 				}

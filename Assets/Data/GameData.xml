@@ -5,6 +5,7 @@
 	  <BaseStoreProfit>1.1</BaseStoreProfit>
 	  <StoreTimer>4</StoreTimer>
 	  <StoreMultiplier>1.25</StoreMultiplier>
+	  <image>store_donuts</image>
 	</store>  
 	<store>
 	  <name>Pizza Restaurant</name>
@@ -12,12 +13,14 @@
 	  <BaseStoreProfit>1.2</BaseStoreProfit>
 	  <StoreTimer>7</StoreTimer>
 	  <StoreMultiplier>2.45</StoreMultiplier>
+	  <image>store_pizza</image>
 	</store>  
 	<store>
-	  <name>Clothes Store</name>
+	  <name>Shoes Store</name>
 	  <BaseStoreCost>5.48</BaseStoreCost>
 	  <BaseStoreProfit>1.35</BaseStoreProfit>
 	  <StoreTimer>12</StoreTimer>
 	  <StoreMultiplier>4.85</StoreMultiplier>
+	  <image>store_shoes</image>
 	</store>  
 </gamedata>
