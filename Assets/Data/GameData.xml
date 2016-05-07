@@ -1,4 +1,6 @@
 <gamedata>
+	<CompanyName>Bananasoft Inc.</CompanyName>
+	<StartingBalance>2.25</StartingBalance>
 	<store>
 	  <name>Donut Shop</name>
 	  <BaseStoreCost>1.25</BaseStoreCost>

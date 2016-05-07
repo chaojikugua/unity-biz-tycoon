@@ -26,6 +26,13 @@ public class DataManager : MonoBehaviour {
 		XmlDocument xmlDoc = new XmlDocument();
 		xmlDoc.LoadXml (GameData.text);
 
+		//game data
+		XmlNodeList startingBalanceNode = xmlDoc.GetElementsByTagName ("StartingBalance");
+		GameManager.instance.AddToBalance (float.Parse(startingBalanceNode [0].InnerText));
+		string companyName = xmlDoc.GetElementsByTagName ("CompanyName") [0].InnerText;
+		GameManager.instance.CompanyName = companyName;
+
+		//store data
 		XmlNodeList storeList = xmlDoc.GetElementsByTagName ("store");
 		foreach (XmlNode storeInfo in storeList) {
 			GameObject newStore = (GameObject)Instantiate (StorePrefab);

@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour {
 	public static event UpdateBalance OnUpdateBalance;
 
 	public static GameManager instance;
-	float currentBalance;
+	float currentBalance = 0f;
+	public string CompanyName;
 
 	// Use this for initialization
 	void Start () {
-		currentBalance = 2.0f;
 		if (OnUpdateBalance != null)
 			OnUpdateBalance();		
 	}
