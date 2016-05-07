@@ -22,10 +22,12 @@ public class UIStore : MonoBehaviour {
 
 	void OnEnable() {
 		GameManager.OnUpdateBalance += UpdateUI; //subscribe to OnUpdateBalance event
+		DataManager.OnLoadDataComplete += UpdateUI; //subscribe to OnLoadDataComplete event
 	}
 
 	void OnDisable() {
 		GameManager.OnUpdateBalance -= UpdateUI; //unsubscribe to OnUpdateBalance event
+		DataManager.OnLoadDataComplete -= UpdateUI; //unsubscribe to OnLoadDataComplete event
 	}		
 
 	// Update is called once per frame

@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour {
 
+	public delegate void LoadDataComplete();
+	public static event LoadDataComplete OnLoadDataComplete;
 	public TextAsset GameData;
 	public GameObject StorePrefab;
 	public GameObject StorePanel;
 
 	public void Start() {
-		Invoke ("LoadData", .1f);
+		LoadData ();
+		if (OnLoadDataComplete != null) {
+			OnLoadDataComplete ();
+		}
 	}
 
 	public void LoadData() {
@@ -54,6 +59,10 @@ public class DataManager : MonoBehaviour {
 				if (storeNode.Name == "StoreTimerDivisor") {
 					storeObj.storeTimerDivisor = int.Parse (storeNode.InnerText);
 				}
+				if (storeNode.Name == "StoreUnlocked") {
+					storeObj.storeUnlocked = bool.Parse (storeNode.InnerText);
+				}
+				storeObj.setNextStoreCost (storeObj.baseStoreCost);
 				newStore.transform.SetParent (StorePanel.transform, false);
 			}
 		}

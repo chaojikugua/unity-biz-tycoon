@@ -19,7 +19,6 @@ public class Store : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startTimer = false;
-		nextStoreCost = baseStoreCost;
 		storeCount = 0;
 	}
 		
@@ -61,6 +60,10 @@ public class Store : MonoBehaviour {
 
 	public float getNextStoreCost() {
 		return nextStoreCost;
+	}
+
+	public void setNextStoreCost(float _nextStoreCost) {
+		nextStoreCost = _nextStoreCost;
 	}
 
 	public int getStoreCount() {

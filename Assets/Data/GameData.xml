@@ -6,6 +6,7 @@
 	  <StoreTimer>4</StoreTimer>
 	  <StoreMultiplier>1.25</StoreMultiplier>
 	  <StoreTimerDivisor>20</StoreTimerDivisor>
+	  <StoreUnlocked>true</StoreUnlocked>
 	  <image>store_donuts</image>
 	</store>  
 	<store>
@@ -15,6 +16,7 @@
 	  <StoreTimer>7</StoreTimer>
 	  <StoreMultiplier>2.45</StoreMultiplier>
 	  <StoreTimerDivisor>30</StoreTimerDivisor>
+	  <StoreUnlocked>false</StoreUnlocked>
 	  <image>store_pizza</image>
 	</store>  
 	<store>
@@ -24,6 +26,7 @@
 	  <StoreTimer>12</StoreTimer>
 	  <StoreMultiplier>4.85</StoreMultiplier>
 	  <StoreTimerDivisor>40</StoreTimerDivisor>
+	  <StoreUnlocked>false</StoreUnlocked>
 	  <image>store_shoes</image>
 	</store>  
 </gamedata>
