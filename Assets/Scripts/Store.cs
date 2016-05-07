@@ -11,7 +11,7 @@ public class Store : MonoBehaviour {
 	public float baseStoreProfit;
 	public bool managerUnlocked;
 	public bool storeUnlocked;
-	public int storeTimerDivisor = 1;
+	public int storeTimerDivisor;
 	float currentTimer = 0f;
 	bool startTimer;
 	float nextStoreCost;
@@ -21,7 +21,6 @@ public class Store : MonoBehaviour {
 		startTimer = false;
 		nextStoreCost = baseStoreCost;
 		storeCount = 0;
-		storeTimer = 4f;
 	}
 		
 	// Update is called once per frame

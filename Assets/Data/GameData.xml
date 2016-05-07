@@ -5,6 +5,7 @@
 	  <BaseStoreProfit>1.1</BaseStoreProfit>
 	  <StoreTimer>4</StoreTimer>
 	  <StoreMultiplier>1.25</StoreMultiplier>
+	  <StoreTimerDivisor>20</StoreTimerDivisor>
 	  <image>store_donuts</image>
 	</store>  
 	<store>
@@ -13,6 +14,7 @@
 	  <BaseStoreProfit>1.2</BaseStoreProfit>
 	  <StoreTimer>7</StoreTimer>
 	  <StoreMultiplier>2.45</StoreMultiplier>
+	  <StoreTimerDivisor>30</StoreTimerDivisor>
 	  <image>store_pizza</image>
 	</store>  
 	<store>
@@ -21,6 +23,7 @@
 	  <BaseStoreProfit>1.35</BaseStoreProfit>
 	  <StoreTimer>12</StoreTimer>
 	  <StoreMultiplier>4.85</StoreMultiplier>
+	  <StoreTimerDivisor>40</StoreTimerDivisor>
 	  <image>store_shoes</image>
 	</store>  
 </gamedata>

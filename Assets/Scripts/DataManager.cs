@@ -51,6 +51,9 @@ public class DataManager : MonoBehaviour {
 				if (storeNode.Name == "StoreMultiplier") {
 					storeObj.storeMultiplier = float.Parse (storeNode.InnerText);
 				}
+				if (storeNode.Name == "StoreTimerDivisor") {
+					storeObj.storeTimerDivisor = int.Parse (storeNode.InnerText);
+				}
 				newStore.transform.SetParent (StorePanel.transform, false);
 			}
 		}
